@@ -6,15 +6,15 @@ from tweepy.streaming import StreamListener
 from textblob import TextBlob
 from elasticsearch import Elasticsearch
 
-from tools.google_api_handler import GoogleAPIHandler
+#from tools.google_api_handler import GoogleAPIHandler
 
 class TweetStreamListener(StreamListener):
-    def __init__(self, index, doc_type, google_api_key=None):
+    def __init__(self, index, doc_type):
         super(TweetStreamListener, self).__init__()
 
         self.index = index
         self.doc_type = doc_type
-        self.google_api_key = google_api_key
+#        self.google_api_key = google_api_key
 
     def on_data(self, data):
         """"On success.
@@ -34,8 +34,8 @@ class TweetStreamListener(StreamListener):
         hashtags = self._get_hashtags(dict_data)
         print("[hashtags]", hashtags)
 
-        country = self._get_geo_info(dict_data)
-        print("[country]", country)
+#        country = self._get_geo_info(dict_data)
+#        print("[country]", country)
 
         timestamp = self._get_timestamp(dict_data)
         print("[time]", timestamp)
@@ -47,7 +47,7 @@ class TweetStreamListener(StreamListener):
                "polarity": polarity,
                "subjectivity": subjectivity,
                "sentiment": sentiment,
-               "country": country,
+#               "country": country,
                "hashtags":hashtags}
         
         es = Elasticsearch()
@@ -89,17 +89,17 @@ class TweetStreamListener(StreamListener):
         
         return hashtags
     
-    def _get_geo_info(self, decoded):
-        country = None
-
-        if self.google_api_key:
-            handler = GoogleAPIHandler(self.google_api_key)
-            if 'coordinates' in decoded and decoded['coordinates'] is not None:
-                latitude = str(decoded['coordinates']['coordinates'][1])
-                longitude = str(decoded['coordinates']['coordinates'][0])
-                country = handler.get_geo_info(latitude, longitude)
-        
-        return country
+#    def _get_geo_info(self, decoded):
+#        country = None
+#
+#        if self.google_api_key:
+#            handler = GoogleAPIHandler(self.google_api_key)
+#            if 'coordinates' in decoded and decoded['coordinates'] is not None:
+#                latitude = str(decoded['coordinates']['coordinates'][1])
+#                longitude = str(decoded['coordinates']['coordinates'][0])
+#                country = handler.get_geo_info(latitude, longitude)
+#        
+#        return country
     
     def _get_timestamp(self, decoded):
         timestamp = datetime.strptime(decoded['created_at'],'%a %b %d %H:%M:%S +0000 %Y').replace(tzinfo=pytz.UTC).isoformat()

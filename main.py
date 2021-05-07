@@ -4,7 +4,11 @@ from tweepy import Stream
 import sys
 
 # Import twitter keys and tokens
-from config import *
+from my_config import consumer_key
+from my_config import consumer_secret
+from my_config import access_token
+from my_config import access_token_secret
+
 
 # Import listener
 from tools.tweet_listener import TweetStreamListener
@@ -16,8 +20,8 @@ def main():
     topics = []
     if len(sys.argv) == 1:
         # Default topics
-        topics = ['#interstellar', '#inception', '#dunkirk', 
-                  'interstellar', 'inception', 'dunkirk']
+        topics = ['#covid', '#corona', '#SARS','#vaccination','#Pfizer'
+                  'covid', 'corona', 'SARS','vaccination','Pfizer']
     else:
         for topic in sys.argv[1:]:
             topics.append(topic)
@@ -33,9 +37,7 @@ def main():
     # Create instance of the tweepy tweet stream listener
     listener = TweetStreamListener(
                         index,
-                        doc_type,
-                        google_api_key=google_api_key
-                        )
+                        doc_type)
 
     # Set twitter keys/tokens
     auth = OAuthHandler(consumer_key, consumer_secret)
