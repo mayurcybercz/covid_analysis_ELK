@@ -26,8 +26,8 @@ def main():
         for topic in sys.argv[1:]:
             topics.append(topic)
     
-    # Change this if you're not happy with the index and type names
-    index = "tweet-sentiment"
+    
+    index = "covid-analysis-elk"
     doc_type = "new-tweet"
 
     print("==> Topics", topics)
