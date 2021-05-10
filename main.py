@@ -10,13 +10,13 @@ from my_config import access_token
 from my_config import access_token_secret
 
 
-# Import listener
+
 from tools.tweet_listener import TweetStreamListener
 
 def main():
     """Pipelines"""
 
-    # Obtain the input topics of your interests
+    
     topics = []
     if len(sys.argv) == 1:
         # Default topics
@@ -46,11 +46,9 @@ def main():
     # Set the program to restart automatically in case of errors
     while True:
         try:
-            # Search twitter for topics of your interests
             stream = Stream(auth, listener)
             stream.filter(track=topics)
         except KeyboardInterrupt:
-            # To stop the program
             stream.disconnect()
             print("==> Stop")
             break

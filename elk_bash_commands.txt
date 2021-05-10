@@ -1,0 +1,9 @@
+Elastic
+cd Desktop\comp529\elasticsearch-7.12.0-windows-x86_64\elasticsearch-7.12.0
+bin\elasticsearch.bat
+Kibana
+cd Desktop\comp529\kibana-7.12.0-windows-x86_64\kibana-7.12.0-windows-x86_64
+bin\kibana.bat
+Logstash
+cd Desktop\comp529\logstash-7.12.0-windows-x86_64\logstash-7.12.0
+bin/logstash -f bin/logstash-simple.conf

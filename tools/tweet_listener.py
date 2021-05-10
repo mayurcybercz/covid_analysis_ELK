@@ -23,7 +23,7 @@ class TweetStreamListener(StreamListener):
         """
 
         print("=> Retrievd a tweet")
-
+#        print(data)
         # Decode json
         dict_data = json.loads(data)
 
@@ -48,6 +48,7 @@ class TweetStreamListener(StreamListener):
                "subjectivity": subjectivity,
                "sentiment": sentiment,
 #               "country": country,
+               "location":dict_data["user"]["location"],
                "hashtags":hashtags}
         
         es = Elasticsearch()
@@ -97,7 +98,8 @@ class TweetStreamListener(StreamListener):
 #            if 'coordinates' in decoded and decoded['coordinates'] is not None:
 #                latitude = str(decoded['coordinates']['coordinates'][1])
 #                longitude = str(decoded['coordinates']['coordinates'][0])
-#                country = handler.get_geo_info(latitude, longitude)
+#                #country = handler.get_geo_info(latitude, longitude)
+#                print(str(latitude)+" "+str(longitude))
 #        
 #        return country
     
