@@ -15,6 +15,6 @@ then run kibana<br/>
 bin\kibana.bat (in the kibana folder)<br/>
 Create index-pattern at http://localhost:5601
 
-![Realtime twitter data Dashboard](images/realtime_dashboard_1.png)
+![Realtime twitter data Dashboard](images/realtime_dashboard_1.PNG)
 
-![Realtime twitter data Discover](images/realtime_discover_1.png)
+![Realtime twitter data Discover](images/realtime_discover_1.PNG)
