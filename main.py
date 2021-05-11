@@ -20,12 +20,12 @@ def main():
     topics = []
     if len(sys.argv) == 1:
         # Default topics
-        topics = ['#covid', '#corona', '#SARS','#vaccination','#Pfizer'
+        topics = ['#covid', '#corona', '#SARS','#vaccination','#Pfizer',
                   'covid', 'corona', 'SARS','vaccination','Pfizer']
     else:
         for topic in sys.argv[1:]:
             topics.append(topic)
-    
+    #user input can be replaced with file input  
     
     index = "covid-analysis-elk"
     doc_type = "new-tweet"
